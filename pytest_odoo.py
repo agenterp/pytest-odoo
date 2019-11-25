@@ -85,11 +85,15 @@ def load_registry():
     # And also give wrong timing indications.
     # Finally we enable `testing` flag on current thread
     # since Odoo sets it when loading test suites.
+    print(
+        "###############load_registry##################",
+        odoo.tests.common.get_db_name(),
+    )
     threading.currentThread().testing = True
     odoo.registry(odoo.tests.common.get_db_name())
 
 
-@pytest.fixture(scope='module', autouse=True)
+@pytest.fixture(scope="module", autouse=True)
 def enable_odoo_test_flag():
     # When we run tests through Odoo, test_enable is always activated, and some
     # code might rely on this (for instance to selectively disable database
