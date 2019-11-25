@@ -75,7 +75,7 @@ def pytest_cmdline_main(config):
         yield
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def load_registry():
     # Initialize the registry before running tests.
     # If we don't do that, the modules will be loaded *inside* of the first
